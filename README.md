@@ -469,20 +469,6 @@ public class Car { ... }
 
 ---
 
-## 🏃 Development Tips
-
-### Hot Reload
-Spring Boot DevTools is not included, but you can add it:
-```gradle
-runtimeOnly 'org.springframework.boot:spring-boot-devtools'
-```
-
-### Logging Levels
-Adjust logging in [application.properties](src/main/resources/application.properties):
-```properties
-logging.level.com.aem.carfuel=DEBUG
-```
-
 ### Database Integration (Future Enhancement)
 To add database persistence:
 1. Add Spring Data JPA dependency

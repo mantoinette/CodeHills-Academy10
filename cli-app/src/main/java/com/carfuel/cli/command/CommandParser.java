@@ -88,7 +88,7 @@ public class CommandParser {
         if (response.statusCode() == 200) {
             JsonObject car = gson.fromJson(response.body(), JsonObject.class);
             int entriesCount = car.getAsJsonArray("fuelEntries").size();
-            System.out.println("✅ Fuel entry added successfully!");
+            System.out.println("Fuel entry added successfully!");
             System.out.println("   Car:           " + car.get("brand").getAsString() + " " + 
                              car.get("model").getAsString());
             System.out.println("   Total entries: " + entriesCount);
@@ -187,9 +187,9 @@ public class CommandParser {
         try {
             JsonObject error = gson.fromJson(response.body(), JsonObject.class);
             String message = error.has("message") ? error.get("message").getAsString() : "Unknown error";
-            System.err.println("❌ Error (" + response.statusCode() + "): " + message);
+            System.err.println("Error (" + response.statusCode() + "): " + message);
         } catch (Exception e) {
-            System.err.println("❌ Error (" + response.statusCode() + "): " + response.body());
+            System.err.println("Error (" + response.statusCode() + "): " + response.body());
         }
     }
 }

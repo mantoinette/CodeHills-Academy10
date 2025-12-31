@@ -32,7 +32,7 @@ public class CarFuelCli {
             
             // Check if server is running
             if (!serverManager.isServerRunning()) {
-                System.out.println("⚠️  Backend server is not running.");
+                System.out.println("Backend server is not running.");
                 
                 if (serverManager.canStartServer()) {
                     System.out.print("Start the server now? (y/n): ");
@@ -40,19 +40,19 @@ public class CarFuelCli {
                     try {
                         int ch = System.in.read();
                         if (ch == 'y' || ch == 'Y') {
-                            System.out.println("🚀 Starting backend server...");
+                            System.out.println("Starting backend server...");
                             serverManager.startServer();
-                            System.out.println("✅ Server started successfully!");
+                            System.out.println("Server started successfully!");
                         } else {
-                            System.err.println("❌ Server is required. Exiting.");
+                            System.err.println("Server is required. Exiting.");
                             System.exit(1);
                         }
                     } catch (Exception e) {
-                        System.err.println("❌ Failed to start server: " + e.getMessage());
+                        System.err.println("Failed to start server: " + e.getMessage());
                         System.exit(1);
                     }
                 } else {
-                    System.err.println("❌ Server JAR not found. Please ensure " + SERVER_JAR_NAME + 
+                    System.err.println("Server JAR not found. Please ensure " + SERVER_JAR_NAME + 
                             " is in the current directory or ../build/libs/");
                     System.exit(1);
                 }
@@ -63,10 +63,10 @@ public class CarFuelCli {
             commandParser.executeCommand(command, args);
             
         } catch (IllegalArgumentException e) {
-            System.err.println("❌ Error: " + e.getMessage());
+            System.err.println("Error: " + e.getMessage());
             System.exit(1);
         } catch (Exception e) {
-            System.err.println("❌ Unexpected error: " + e.getMessage());
+            System.err.println("Unexpected error: " + e.getMessage());
             if (System.getProperty("debug") != null) {
                 e.printStackTrace();
             }

@@ -1,4 +1,3 @@
 rootProject.name = 'carfuel'
 
-// Include CLI as a separate module
-include 'cli'
+

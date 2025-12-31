@@ -16,7 +16,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Service layer for car and fuel management business logic.
+ * Service layer for car and fuel management logic.
  * Handles car creation, fuel entry management, and statistics calculation.
  */
 @Service

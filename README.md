@@ -469,15 +469,6 @@ public class Car { ... }
 
 ---
 
-### Database Integration (Future Enhancement)
-To add database persistence:
-1. Add Spring Data JPA dependency
-2. Add H2 or PostgreSQL dependency
-3. Replace `InMemoryCarStorage` with JPA repositories
-4. Add `@Entity` annotations to model classes
-
----
-
 ## 📝 Architecture Decisions
 
 ### Why Both REST and Servlet?

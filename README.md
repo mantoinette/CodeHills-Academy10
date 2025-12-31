@@ -7,7 +7,6 @@ A Spring Boot REST API application for tracking vehicle fuel consumption and per
 ## 📚 Quick Links
 
 - 🚀 **First Time?** → [Quick Start (5 minutes)](#-quick-start-5-minutes)
-- 📋 **Quick Overview?** → [PROJECT-SUMMARY.md](PROJECT-SUMMARY.md) - 2-minute summary
 - 🔍 **Need API Reference?** → [API-REFERENCE.md](API-REFERENCE.md) - Quick endpoint lookup
 - 💻 **Using CLI?** → [cli-app/README.md](cli-app/README.md) - CLI application guide
 - 🏗️ **Architecture Details?** → [IMPLEMENTATION.md](IMPLEMENTATION.md) - Technical deep dive
@@ -17,7 +16,6 @@ A Spring Boot REST API application for tracking vehicle fuel consumption and per
 | If you need… | Go here |
 |--------------|---------|
 | Fast start | [Quick Start (5 minutes)](#-quick-start-5-minutes) |
-| 2-minute overview | [PROJECT-SUMMARY.md](PROJECT-SUMMARY.md) |
 | Endpoint details | [API-REFERENCE.md](API-REFERENCE.md) |
 | Architecture & rationale | [IMPLEMENTATION.md](IMPLEMENTATION.md) |
 | CLI usage | [cli-app/README.md](cli-app/README.md) |
@@ -686,14 +684,6 @@ server.port=8081
 
 ---
 
-## 📖 Learning Resources
-
-- [Spring Boot Documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/)
-- [Jakarta Servlet Specification](https://jakarta.ee/specifications/servlet/)
-- [Gradle User Guide](https://docs.gradle.org/current/userguide/userguide.html)
-
----
-
 ## 👨‍💻 Technical Stack
 
 - **Framework**: Spring Boot 4.0.1
@@ -705,22 +695,6 @@ server.port=8081
   - Jakarta Servlet API 6.0
   - Lombok
   - Jackson (JSON processing)
-
----
-
-## 📄 License
-
-This is an educational project for demonstrating Spring Boot and Servlet integration.
-
----
-
-## 🤝 Support
-
-For issues or questions:
-1. Check the logs at startup
-2. Verify all endpoints are registered
-3. Test with provided cURL commands
-4. Review error messages in console
 
 ---
 

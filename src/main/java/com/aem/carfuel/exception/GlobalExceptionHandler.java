@@ -2,10 +2,14 @@ package com.aem.carfuel.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import java.time.LocalDateTime;
 
@@ -104,6 +108,58 @@ public class GlobalExceptionHandler {
             LocalDateTime.now()
         );
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
+
+    /**
+     * Handle HttpMessageNotReadableException - returns 400 Bad Request for malformed JSON.
+     */
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ErrorResponse> handleUnreadableMessage(HttpMessageNotReadableException ex) {
+        ErrorResponse error = new ErrorResponse(
+            "Malformed request body. Ensure valid JSON is sent.",
+            HttpStatus.BAD_REQUEST.value(),
+            LocalDateTime.now()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
+
+    /**
+     * Handle HttpRequestMethodNotSupportedException - returns 405 Method Not Allowed.
+     */
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public ResponseEntity<ErrorResponse> handleMethodNotSupported(HttpRequestMethodNotSupportedException ex) {
+        ErrorResponse error = new ErrorResponse(
+            String.format("Method %s not allowed for this endpoint.", ex.getMethod()),
+            HttpStatus.METHOD_NOT_ALLOWED.value(),
+            LocalDateTime.now()
+        );
+        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(error);
+    }
+
+    /**
+     * Handle HttpMediaTypeNotSupportedException - returns 415 Unsupported Media Type.
+     */
+    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+    public ResponseEntity<ErrorResponse> handleUnsupportedMediaType(HttpMediaTypeNotSupportedException ex) {
+        ErrorResponse error = new ErrorResponse(
+            "Unsupported media type. Use application/json.",
+            HttpStatus.UNSUPPORTED_MEDIA_TYPE.value(),
+            LocalDateTime.now()
+        );
+        return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE).body(error);
+    }
+
+    /**
+     * Handle NoHandlerFoundException - returns 404 Not Found for unknown routes.
+     */
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public ResponseEntity<ErrorResponse> handleNoHandler(NoHandlerFoundException ex) {
+        ErrorResponse error = new ErrorResponse(
+            String.format("Route %s %s not found.", ex.getHttpMethod(), ex.getRequestURL()),
+            HttpStatus.NOT_FOUND.value(),
+            LocalDateTime.now()
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
     
     /**
